@@ -14,7 +14,7 @@ alias al='cat ~/.bash_aliases'
 
 #Git
 alias g='git $1'
-alias gi='~/gitInit.sh'
+alias gi='~/Useful/gitInit.sh'
 alias remote='git remote add origin https://github.com/Ozymadias/"${PWD##*/}".git && git push -u origin master'
 alias cl='git clone $1'
 alias uncommit='git reset HEAD~1 --soft'
@@ -22,6 +22,7 @@ alias uncommit='git reset HEAD~1 --soft'
 alias st='git status'
 alias a='git add . && st'
 alias c='git commit -m $1'
+alias ca='git commit --amend --no-edit'
 alias l='git log --pretty=format:"%Cgreen%h%x09%Cblue%an%x09%Cred%ad%x09%Creset%s" --date=format:%c'
 alias ll='git log'
 
@@ -36,4 +37,4 @@ alias d='git branch -d $1'
 alias br='git branch -m $1'
 
 
-alias gii='~/createGitIgnore.sh'
+alias gii='~/Useful/createGitIgnore.sh'
