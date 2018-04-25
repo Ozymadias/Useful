@@ -3,7 +3,7 @@
 
 git init
 
-cat ~/gitInitFile.txt > .gitignore
+cat ~/Useful/gitInitFile.txt > .gitignore
 
 git add .gitignore pom.xml
 
