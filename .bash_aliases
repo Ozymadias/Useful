@@ -2,9 +2,11 @@ alias u='cd ..'
 alias uu='up 2'
 up () { for((n=0;n<$1;n++)); do cd ..; done;}
 function mcd { mkdir -p "$1"; cd "$1";}
-alias cdi='cd IdeaProjects/; ls;'
+alias cdi='cd ~/IdeaProjects/; ls;'
 alias printJar='jar tf $1'
 count () { grep -o $1 | wc -l;}
+
+alias editBA='vi ~/Useful/.bash_aliases'
 
 alias s='source ~/.bashrc'
 alias r='rm -rf $1'
@@ -32,9 +34,14 @@ alias pb='git pull origin "$(git rev-parse --abbrev-ref HEAD)"'
 
 alias b='git checkout -b $1'
 alias cb='git checkout $1'
+alias cbm='git checkout master'
 alias bb='git branch'
 alias d='git branch -d $1'
 alias br='git branch -m $1'
 
+alias gs='git stash'
+alias gsa='git stash apply'
+
+alias gch='git checkout $1'
 
 alias gii='~/Useful/createGitIgnore.sh'
