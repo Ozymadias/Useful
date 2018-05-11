@@ -6,13 +6,13 @@ alias cdi='cd ~/IdeaProjects/; ls;'
 alias printJar='jar tf $1'
 count () { grep -o $1 | wc -l;}
 
-alias editBA='vi ~/Useful/.bash_aliases'
+alias eba='vi ~/Useful/.bash_aliases'
 
 alias s='source ~/.bashrc'
 alias r='rm -rf $1'
 alias version='lsb_release -a'
 
-alias al='cat ~/.bash_aliases'
+alias al='cat ~/Useful/.bash_aliases'
 
 #Git
 alias g='git $1'
@@ -43,5 +43,6 @@ alias gs='git stash'
 alias gsa='git stash apply'
 
 alias gch='git checkout $1'
+alias gd='git diff $1'
 
 alias gii='~/Useful/createGitIgnore.sh'
