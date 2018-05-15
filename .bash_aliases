@@ -6,13 +6,13 @@ alias cdi='cd ~/IdeaProjects/; ls;'
 alias printJar='jar tf $1'
 count () { grep -o $1 | wc -l;}
 
-alias eba='vi ~/Useful/.bash_aliases'
-
 alias s='source ~/.bashrc'
 alias r='rm -rf $1'
 alias version='lsb_release -a'
 
 alias al='cat ~/Useful/.bash_aliases'
+alias alg='al | grep $1'
+alias eba='vi ~/Useful/.bash_aliases'
 
 #Git
 alias g='git $1'
@@ -25,6 +25,8 @@ alias st='git status'
 alias a='git add . && st'
 alias c='git commit -m $1'
 alias ca='git commit --amend --no-edit'
+alias cam='git commit --amend -m $1'
+
 alias l='git log --pretty=format:"%Cgreen%h%x09%Cblue%an%x09%Cred%ad%x09%Creset%s" --date=format:%c'
 alias ll='git log'
 
