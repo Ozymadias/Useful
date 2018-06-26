@@ -20,6 +20,7 @@ alias gi='~/Useful/gitInit.sh'
 alias remote='git remote add origin https://github.com/Ozymadias/"${PWD##*/}".git && git push -u origin master'
 alias cl='git clone $1'
 alias uncommit='git reset HEAD~1 --soft'
+alias unc='uncommit $1'
 
 alias st='git status'
 alias a='git add . && st'
@@ -45,6 +46,9 @@ alias gs='git stash'
 alias gsa='git stash apply'
 
 alias gch='git checkout $1'
-alias gd='git diff $1'
+alias dif='git diff $1'
+
+alias cher='git cherry-pick $1'
+alias reb='git rebase $1'
 
 alias gii='~/Useful/createGitIgnore.sh'
