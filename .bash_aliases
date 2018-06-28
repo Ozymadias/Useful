@@ -24,6 +24,7 @@ alias unc='uncommit $1'
 
 alias st='git status'
 alias a='git add . && st'
+alias una='git reset'
 alias c='git commit -m $1'
 alias ca='git commit --amend --no-edit'
 alias cam='git commit --amend -m $1'
@@ -50,5 +51,7 @@ alias dif='git diff $1'
 
 alias cher='git cherry-pick $1'
 alias reb='git rebase $1'
+alias reba='git rebase --abort'
+alias rebc='git rebase --continue'
 
 alias gii='~/Useful/createGitIgnore.sh'
