@@ -1,8 +1,11 @@
+USEFUL_PATH="~/Useful"
+BA_PATH="~/Useful/.bash_aliases"
 alias u='cd ..'
 alias uu='up 2'
 up () { for((n=0;n<$1;n++)); do cd ..; done;}
 function mcd { mkdir -p "$1"; cd "$1";}
 alias cdi='cd ~/IdeaProjects/; ls;'
+alias cda='cd $USEFUL_PATH'
 alias printJar='jar tf $1'
 count () { grep -o $1 | wc -l;}
 
@@ -19,8 +22,13 @@ alias g='git $1'
 alias gi='~/Useful/gitInit.sh'
 alias remote='git remote add origin https://github.com/Ozymadias/"${PWD##*/}".git && git push -u origin master'
 alias cl='git clone $1'
-alias uncommit='git reset HEAD~1 --soft'
-alias unc='uncommit $1'
+uncommit () { git reset --soft HEAD~$1;}
+unc () { git reset --soft HEAD~$1;}
+lcc () { name=$(git log --pretty=format:"%an" --date=format:%c -n 1); dateOfLastCommitOfOtherPerson=$(git log --pretty=format:"%Cred%ad%x09" --date=format:%c --perl-regexp --author='^((?!'"$name"').*)$' -n 1); lastConsecutiveCommitsNumber=$(git --no-pager log --pretty=format:"%Cgreen%h%x09%Cblue%an%x09%Cred%ad%x09%Creset%s" --date=format:%c --author="$name" --after="$dateOfLastCommitOfOtherPerson" | grep "$name" | wc -l); echo $lastConsecutiveCommitsNumber;}
+unco () { for i in `seq $1`; do unc; done;}
+unca () { unco $(lcc);}
+
+rev='git reset --hard'
 
 alias st='git status'
 alias a='git add . && st'
@@ -28,17 +36,23 @@ alias una='git reset'
 alias c='git commit -m $1'
 alias ca='git commit --amend --no-edit'
 alias cam='git commit --amend -m $1'
+alias cf='c "Fix things pointed out during code review"'
 
-alias l='git log --pretty=format:"%Cgreen%h%x09%Cblue%an%x09%Cred%ad%x09%Creset%s" --date=format:%c'
-alias ll='git log'
+alias gla='git --no-pager log --pretty=format:"%Cgreen%h%x09%Cblue%an%x09%Cred%ad%x09%Creset%s" --date=format:%c'
+alias l='gla -n 7'
+alias gl='git log'
+alias ll='gla -n 15'
 
 alias p='git push origin "$(git rev-parse --abbrev-ref HEAD)"'
+alias pf='git push origin "$(git rev-parse --abbrev-ref HEAD)" -f'
+alias pt='git push origin "$(git rev-parse --abbrev-ref HEAD):$1"'
 alias pu='git pull'
 alias pb='git pull origin "$(git rev-parse --abbrev-ref HEAD)"'
 
 alias b='git checkout -b $1'
 alias cb='git checkout $1'
 alias cbm='git checkout master'
+alias cbd='git checkout develop'
 alias bb='git branch'
 alias d='git branch -d $1'
 alias br='git branch -m $1'
@@ -50,8 +64,29 @@ alias gch='git checkout $1'
 alias dif='git diff $1'
 
 alias cher='git cherry-pick $1'
+alias cherc='git cherry-pick --continue'
+alias chera='git cherry-pick --abort'
 alias reb='git rebase $1'
+alias rebm='reb master'
 alias reba='git rebase --abort'
 alias rebc='git rebase --continue'
 
-alias gii='~/Useful/createGitIgnore.sh'
+alias gii='$USEFUL_PATH/createGitIgnore.sh'
+
+#MAVEN
+alias mc='mvn clean'
+alias mi='mvn clean install'
+alias mist='mvn clean install -DskipTests'
+alias mt='mvn clean test'
+alias mp='mvn clean package'
+
+#DOCKER
+dpu () { docker pull $1;}
+alias dps='docker ps'
+alias dls='docker container ls'
+dru () { docker run $1;}
+drm () { docker stop $1; docker rm $1;}
+dl () { docker log $1;}
+din () { docker inspect $1;}
+dre () { docker restart $1;}
+alias di='docker images'
