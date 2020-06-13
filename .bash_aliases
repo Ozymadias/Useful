@@ -6,6 +6,11 @@ up () { for((n=0;n<$1;n++)); do cd ..; done;}
 function mcd { mkdir -p "$1"; cd "$1";}
 alias cdi='cd ~/IdeaProjects/; ls;'
 alias cda='cd $USEFUL_PATH'
+
+alias psi='ps -A | grep  ntelli'
+watch () { while :; do clear; $@; sleep 2; done;} #your command
+fel () { cat $1 | while read line; do echo $line; done;}
+
 alias printJar='jar tf $1'
 count () { grep -o $1 | wc -l;}
 
