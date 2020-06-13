@@ -49,6 +49,7 @@ alias gla='git --no-pager log --pretty=format:"%Cgreen%h%x09%Cblue%an%x09%Cred%a
 alias l='gla -n 7'
 alias gl='git log'
 alias ll='gla -n 15'
+alias l3='gla -n 21'
 
 alias p='git push origin "$(git rev-parse --abbrev-ref HEAD)"'
 alias pf='git push origin "$(git rev-parse --abbrev-ref HEAD)" -f'
