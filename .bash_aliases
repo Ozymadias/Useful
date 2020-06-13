@@ -33,6 +33,8 @@ lcc () { name=$(git log --pretty=format:"%an" --date=format:%c -n 1); dateOfLast
 unco () { for i in `seq $1`; do unc; done;}
 unca () { unco $(lcc);}
 
+alias gg='git grep $1 $(git rev-list --all)'
+
 rev='git reset --hard'
 
 alias st='git status'
