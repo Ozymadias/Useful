@@ -78,6 +78,9 @@ alias reb='git rebase $1'
 alias rebm='reb master'
 alias reba='git rebase --abort'
 alias rebc='git rebase --continue'
+rebin () { git rebase --interactive HEAD~"$1";} #change to edit to edit you can also change order of commits, their messages or remove commit (line)
+rebins () { git rebase --interactive "$1";} #for case of sha
+alias rebinc='git commit --all --amend --no-edit; rebc'
 
 alias gii='$USEFUL_PATH/createGitIgnore.sh'
 
