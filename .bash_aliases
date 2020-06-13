@@ -1,5 +1,5 @@
 USEFUL_PATH="~/Useful"
-BA_PATH="~/Useful/.bash_aliases"
+BA_PATH="$USEFUL_PATH/.bash_aliases"
 alias u='cd ..'
 alias uu='up 2'
 up () { for((n=0;n<$1;n++)); do cd ..; done;}
@@ -13,13 +13,13 @@ alias s='source ~/.bashrc'
 alias r='rm -rf $1'
 alias version='lsb_release -a'
 
-alias al='cat ~/Useful/.bash_aliases'
+alias al='cat $BA_PATH'
 alias alg='al | grep $1'
-alias eba='vi ~/Useful/.bash_aliases'
+alias eba='vi $BA_PATH'
 
 #Git
 alias g='git $1'
-alias gi='~/Useful/gitInit.sh'
+alias gi='$USEFUL_PATH/gitInit.sh'
 alias remote='git remote add origin https://github.com/Ozymadias/"${PWD##*/}".git && git push -u origin master'
 alias cl='git clone $1'
 uncommit () { git reset --soft HEAD~$1;}
