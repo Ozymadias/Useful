@@ -93,6 +93,8 @@ alias mi='mvn clean install'
 alias mist='mvn clean install -DskipTests'
 alias mt='mvn clean test'
 alias mp='mvn clean package'
+alias mpst='mvn clean package -DskipTests'
+alias mf='mvn com.coveo:fmt-maven-plugin:format'
 
 #DOCKER
 dpu () { docker pull $1;}
