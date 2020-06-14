@@ -84,6 +84,9 @@ alias rebinc='git commit --all --amend --no-edit; rebc'
 
 alias gii='$USEFUL_PATH/createGitIgnore.sh'
 
+alias gurl='git remote get-url origin'
+gsurl () { git remote set-url origin $1;}
+
 #MAVEN
 alias mc='mvn clean'
 alias mi='mvn clean install'
