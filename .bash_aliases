@@ -58,7 +58,8 @@ alias pu='git pull'
 alias pb='git pull origin "$(git rev-parse --abbrev-ref HEAD)"'
 
 alias b='git checkout -b $1'
-alias cb='git checkout $1'
+alias cb='git checkout $1' #change branch
+__git_complete cb _git_checkout
 alias cbm='git checkout master'
 alias cbd='git checkout develop'
 alias bb='git branch'
