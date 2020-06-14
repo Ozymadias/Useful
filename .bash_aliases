@@ -101,8 +101,60 @@ dpu () { docker pull $1;}
 alias dps='docker ps'
 alias dls='docker container ls'
 dru () { docker run $1;}
-drm () { docker stop $1; docker rm $1;}
-dl () { docker log $1;}
+dsrm () { docker stop $1; docker rm $1;}
+drm () { docker rm $1;}
+drmi () { docker rmi $1;}
+dl () { docker logs $1;}
 din () { docker inspect $1;}
 dre () { docker restart $1;}
 alias di='docker images'
+dii () { docker inspect image $1;} 
+alias drma='docker rm $(docker ps -a -q)'
+db () { docker build -t $1 .;}
+alias dka='docker kill $(docker ps -q)'
+dk () { docker kill $1;}
+alias drmas='docker rm $(docker ps -a -q)'
+alias drmia='docker rmi $(docker images -q)'
+alias drmin='docker rmi $(di -f "dangling=true" -q)'
+
+#KUBERNETES
+ksh () { kubectl exec -it $1 -- /bin/bash;}
+kl () { kubectl logs $1;}
+kp () { kubectl get pod $1;}
+kdp () { kubectl delete pod $1;}
+kdep () { kubectl describe pod $1;}
+
+alias kc='kubectl get cronjob'
+kdc () { kubectl delete cronjob $1;}
+kcm () { kdj $1-manual; kubectl create job --from=cronjob/$1 $1-manual;}
+alias kj='kubectl get job'
+kdj () { kubectl delete job $1;}
+
+alias kd='kubectl get deployments'
+kdd () { kubectl delete deployment $1;}
+ksc () { kubectl scale --replicas=0 deployment/$1;}
+
+alias ks='kubectl get service'
+alias kse='kubectl get secret'
+alias kin='kubectl get ingress'
+
+alias ka='kubectl get all'
+
+kpf () { kubectl port-forward svc/$1 8081:$2;}
+ktp () { echo -n '$1' | base64;}
+ktpd () { echo '$1' | base64 --decode;}
+
+alias kcxg='kubectl config current-context'
+alias kcx='kubectl config get-contexts'
+kcxs () { kubectl config use-context $1;}
+
+#Helm
+alias hls='helm ls'
+
+#company specific
+alias cbj='cb jenkins'
+alias cln='make format'
+alias bd='make build-deploy'
+alias k8d='make k8s-deploy'
+alias k8s='make k8s-status'
+alias k8c='make k8s-clean'
