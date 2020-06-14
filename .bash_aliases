@@ -15,6 +15,7 @@ alias printJar='jar tf $1'
 count () { grep -o $1 | wc -l;}
 
 alias s='source ~/.bashrc'
+alias g='grep $1' #why with ; doesn't work, needs to be function like watch?
 alias r='rm -rf $1'
 alias version='lsb_release -a'
 
@@ -23,7 +24,6 @@ alias alg='al | grep $1'
 alias eba='vi $BA_PATH'
 
 #Git
-alias g='git $1'
 alias gi='$USEFUL_PATH/gitInit.sh'
 alias remote='git remote add origin https://github.com/Ozymadias/"${PWD##*/}".git && git push -u origin master'
 alias cl='git clone $1'
