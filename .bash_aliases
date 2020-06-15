@@ -1,4 +1,4 @@
-USEFUL_PATH="~/Useful"
+USEFUL_PATH="$HOME/Useful"
 BA_PATH="$USEFUL_PATH/.bash_aliases"
 alias u='cd ..'
 alias uu='up 2'
