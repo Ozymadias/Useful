@@ -27,8 +27,7 @@ alias eba='vi $BA_PATH'
 alias gi='$USEFUL_PATH/gitInit.sh'
 alias remote='git remote add origin https://github.com/Ozymadias/"${PWD##*/}".git && git push -u origin master'
 alias cl='git clone $1'
-uncommit () { git reset --soft HEAD~$1;}
-unc () { git reset --soft HEAD~$1;}
+unc () { git reset --soft HEAD~$1;} #uncommit
 lcc () { name=$(git log --pretty=format:"%an" --date=format:%c -n 1); dateOfLastCommitOfOtherPerson=$(git log --pretty=format:"%Cred%ad%x09" --date=format:%c --perl-regexp --author='^((?!'"$name"').*)$' -n 1); lastConsecutiveCommitsNumber=$(git --no-pager log --pretty=format:"%Cgreen%h%x09%Cblue%an%x09%Cred%ad%x09%Creset%s" --date=format:%c --author="$name" --after="$dateOfLastCommitOfOtherPerson" | grep "$name" | wc -l); echo $lastConsecutiveCommitsNumber;}
 unco () { for i in `seq $1`; do unc; done;}
 unca () { unco $(lcc);}
