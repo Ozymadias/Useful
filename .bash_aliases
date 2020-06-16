@@ -38,6 +38,7 @@ rev='git reset --hard'
 
 alias st='git status'
 alias a='git add . && st'
+ad () { git add $@; }
 alias una='git reset'
 alias c='git commit -m $1'
 alias ca='git commit --amend --no-edit'
