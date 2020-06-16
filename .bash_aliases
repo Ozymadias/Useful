@@ -35,6 +35,7 @@ unca () { unco $(lcc);}
 alias gg='git grep $1 $(git rev-list --all)'
 
 rev='git reset --hard'
+alias gcll='git clean -xdn' #git list what clean untrucked remove
 
 alias st='git status'
 alias a='git add . && st'
