@@ -120,9 +120,11 @@ alias drmia='docker rmi $(docker images -q)'
 alias drmin='docker rmi $(di -f "dangling=true" -q)'
 
 #KUBERNETES
-ksh () { kubectl exec -it $1 -- /bin/bash;}
-kl () { kubectl logs $1;}
+kbsh () { kubectl exec -it $1 -- /bin/bash;}
+ksh () { kubectl exec -it $1 -- /bin/sh;}
+kl () { kubectl logs $@;}
 kp () { kubectl get pod $1;}
+kep () { kubectl edit pod $1;}
 kdp () { kubectl delete pod $1;}
 kdep () { kubectl describe pod $1;}
 
@@ -132,17 +134,27 @@ kcm () { kdj $1-manual; kubectl create job --from=cronjob/$1 $1-manual;}
 alias kj='kubectl get job'
 kdj () { kubectl delete job $1;}
 
-alias kd='kubectl get deployments'
+kd () { kubectl get deployment $1;}
+ked () { kubectl edit deployment $1;}
+kded () { kubectl edit deployment $1;}
 kdd () { kubectl delete deployment $1;}
 ksc () { kubectl scale --replicas=0 deployment/$1;}
 
-alias ks='kubectl get service'
-alias kse='kubectl get secret'
+ks () { kubectl get svc $1;}
+kdes () { kubectl describe svc $1;}
+kes () { kubectl edit svc $1;}
+kse () { kubectl get secret $1;}
+ksey () { kubectl get secret $1 -o yaml;}
 alias kin='kubectl get ingress'
+
+kh () { kubectl get hpa $1;}
+kdeh () { kubectl describe hpa $1;}
+keh () { kubectl edit hpa $1;}
 
 alias ka='kubectl get all'
 
 kpf () { kubectl port-forward svc/$1 8081:$2;}
+kpfo () { kubectl port-forward $@;}
 ktp () { echo -n '$1' | base64;}
 ktpd () { echo '$1' | base64 --decode;}
 
