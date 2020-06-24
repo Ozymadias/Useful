@@ -54,7 +54,7 @@ alias l3='gla -n 21; echo'
 
 alias p='git push origin "$(git rev-parse --abbrev-ref HEAD)"'
 alias pf='git push origin "$(git rev-parse --abbrev-ref HEAD)" -f'
-alias pt='git push origin "$(git rev-parse --abbrev-ref HEAD):$1"'
+alias pt='git push origin "$(git rev-parse --abbrev-ref HEAD):$1"' #push to someBranch
 alias pu='git pull'
 alias pb='git pull origin "$(git rev-parse --abbrev-ref HEAD)"'
 
