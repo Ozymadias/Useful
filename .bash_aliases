@@ -136,7 +136,7 @@ kdj () { kubectl delete job $1;}
 
 kd () { kubectl get deployment $1;}
 ked () { kubectl edit deployment $1;}
-kded () { kubectl edit deployment $1;}
+kded () { kubectl describe deployment $1;}
 kdd () { kubectl delete deployment $1;}
 ksc () { kubectl scale --replicas=0 deployment/$1;}
 
