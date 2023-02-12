@@ -162,6 +162,12 @@ alias kcxg='kubectl config current-context'
 alias kcx='kubectl config get-contexts'
 kcxs () { kubectl config use-context $1;}
 
+#Kubectx
+alias kx='kubectx'
+alias kxc='kx -c'
+kxg() { kx $(kx | g '$@');}
+complete -F _complete_alias kx
+
 #Helm
 alias hls='helm ls'
 
