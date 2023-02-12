@@ -138,7 +138,10 @@ kd () { kubectl get deployment $1;}
 ked () { kubectl edit deployment $1;}
 kded () { kubectl describe deployment $1;}
 kdd () { kubectl delete deployment $1;}
-ksc () { kubectl scale --replicas=0 deployment/$1;}
+ksc0 () { kubectl scale --replicas=0 deployment/$1;}
+ksc () { kubectl scale --replicas=$2 deployment/$1;}
+kscn () { kubectl patch hpa -p $1 '{"spec":{"minReplicas": $2}}';} #needs fixes
+kscx () { kubectl patch hpa -p $1 '{"spec":{"maxReplicas": $2}}';}
 
 ks () { kubectl get svc $1;}
 kdes () { kubectl describe svc $1;}
