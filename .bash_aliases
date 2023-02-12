@@ -46,7 +46,7 @@ alias ca='git commit --amend --no-edit'
 alias cam='git commit --amend -m $1'
 alias cf='c "Fix things pointed out during code review"'
 
-alias gla='git --no-pager log --pretty=format:"%Cgreen%h%x09%Cblue%an%x09%Cred%ad%x09%Creset%s" --date=format:%c; echo'
+alias gla='git --no-pager log --pretty=format:"%Cgreen%h%x09%Cblue%an%x09%Cred%ad%x09%Creset%s" --date=format:%c'
 alias l='gla -n 7; echo'
 alias gl='git log'
 alias ll='gla -n 15; echo'
@@ -60,7 +60,7 @@ alias pb='git pull origin "$(git rev-parse --abbrev-ref HEAD)"'
 
 alias b='git checkout -b $1'
 alias cb='git checkout $1' #change branch
-__git_complete cb _git_checkout
+#__git_complete cb _git_checkout
 alias cbm='git checkout master'
 alias cbd='git checkout develop'
 alias bb='git branch'
@@ -134,7 +134,7 @@ kcm () { kdj $1-manual; kubectl create job --from=cronjob/$1 $1-manual;}
 alias kj='kubectl get job'
 kdj () { kubectl delete job $1;}
 
-kd () { kubectl get deployment $1;}
+kd () { kubectl get deployment $@;}
 ked () { kubectl edit deployment $1;}
 kded () { kubectl describe deployment $1;}
 kdd () { kubectl delete deployment $1;}
