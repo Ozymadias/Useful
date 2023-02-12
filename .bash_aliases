@@ -120,10 +120,12 @@ alias drmia='docker rmi $(docker images -q)'
 alias drmin='docker rmi $(di -f "dangling=true" -q)'
 
 #KUBERNETES
-kbsh () { kubectl exec -it $1 -- /bin/bash;}
-ksh () { kubectl exec -it $1 -- /bin/sh;}
-kl () { kubectl logs $@;}
-kp () { kubectl get pod $1;}
+kbsh () { kubectl exec -it $@ -- /bin/bash;}
+ksh () { kubectl exec -it $@ -- /bin/sh;}
+alias kl='kubectl logs'
+complete -F _complete_alias kl
+alias kp='kubectl get pod'
+complete -F _complete_alias kp
 kep () { kubectl edit pod $1;}
 kdp () { kubectl delete pod $1;}
 kdep () { kubectl describe pod $1;}
