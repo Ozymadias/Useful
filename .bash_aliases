@@ -110,7 +110,7 @@ dl () { docker logs $1;}
 din () { docker inspect $1;}
 dre () { docker restart $1;}
 alias di='docker images'
-dii () { docker inspect image $1;} 
+dii () { docker inspect image $1;}
 alias drma='docker rm $(docker ps -a -q)'
 db () { docker build -t $1 .;}
 alias dka='docker kill $(docker ps -q)'
