@@ -21,6 +21,7 @@ alias version='lsb_release -a'
 
 alias al='cat $BA_PATH'
 alias alg='al | grep $1'
+ag() { al | grep -E "^(alias |$)$1(\\(|=)"; }
 alias eba='vi $BA_PATH'
 
 #Git
