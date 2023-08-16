@@ -125,6 +125,7 @@ ksh () { kubectl exec -it $@ -- /bin/sh;}
 alias kl='kubectl logs'
 complete -F _complete_alias kl
 alias kp='kubectl get pod'
+alias kpg='kp | g $@'
 complete -F _complete_alias kp
 kep () { kubectl edit pod $1;}
 kdp () { kubectl delete pod $1;}
