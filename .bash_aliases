@@ -132,7 +132,8 @@ kdep () { kubectl describe pod $1;}
 
 alias kc='kubectl get cronjob'
 kdc () { kubectl delete cronjob $1;}
-kcm () { kdj $1-manual; kubectl create job --from=cronjob/$1 $1-manual;}
+kcmd () { kdj $1-manual;}
+kcm () { kcmd $1; kubectl create job --from=cronjob/$1 $1-manual;}
 alias kj='kubectl get job'
 kdj () { kubectl delete job $1;}
 
@@ -148,6 +149,7 @@ kscx () { kubectl patch hpa -p $1 '{"spec":{"maxReplicas": $2}}';}
 ks () { kubectl get svc $1;}
 kdes () { kubectl describe svc $1;}
 kes () { kubectl edit svc $1;}
+alias kds='kubectl delete svc $1'
 kse () { kubectl get secret $1;}
 ksey () { kubectl get secret $1 -o yaml;}
 alias kin='kubectl get ingress'
