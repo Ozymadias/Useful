@@ -31,7 +31,7 @@ alias cl='git clone $1'
 unc () { git reset --soft HEAD~$1;} #uncommit
 lcc () { name=$(git log --pretty=format:"%an" --date=format:%c -n 1); dateOfLastCommitOfOtherPerson=$(git log --pretty=format:"%Cred%ad%x09" --date=format:%c --perl-regexp --author='^((?!'"$name"').*)$' -n 1); lastConsecutiveCommitsNumber=$(git --no-pager log --pretty=format:"%Cgreen%h%x09%Cblue%an%x09%Cred%ad%x09%Creset%s" --date=format:%c --author="$name" --after="$dateOfLastCommitOfOtherPerson" | grep "$name" | wc -l); echo $lastConsecutiveCommitsNumber;}
 unco () { for i in `seq $1`; do unc; done;}
-unca () { unco $(lcc);}
+alias unca='unco $(lcc)' #doesn't work
 
 alias gg='git grep $1 $(git rev-list --all)'
 
@@ -61,7 +61,7 @@ alias pb='git pull origin "$(git rev-parse --abbrev-ref HEAD)"'
 
 alias b='git checkout -b $1'
 alias cb='git checkout $1' #change branch
-#__git_complete cb _git_checkout
+__git_complete cb _git_checkout
 alias cbm='git checkout master'
 alias cbd='git checkout develop'
 alias bb='git branch'
@@ -121,9 +121,9 @@ alias drmia='docker rmi $(docker images -q)'
 alias drmin='docker rmi $(di -f "dangling=true" -q)'
 
 #KUBERNETES
-kbsh () { kubectl exec -it $@ -- /bin/bash;}
-ksh () { kubectl exec -it $@ -- /bin/sh;}
-alias kl='kubectl logs'
+kbsh () { kubectl exec -it $1 -- /bin/bash;}
+ksh () { kubectl exec -it $1 -- /bin/sh;}
+kl () { kubectl logs $@;}
 complete -F _complete_alias kl
 alias kp='kubectl get pod'
 alias kpg='kp | g $@'
@@ -139,7 +139,7 @@ kcm () { kcmd $1; kubectl create job --from=cronjob/$1 $1-manual;}
 alias kj='kubectl get job'
 kdj () { kubectl delete job $1;}
 
-kd () { kubectl get deployment $@;}
+kd () { kubectl get deployment $1;}
 ked () { kubectl edit deployment $1;}
 kded () { kubectl describe deployment $1;}
 kdd () { kubectl delete deployment $1;}
